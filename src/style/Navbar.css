@@ -1,0 +1,13 @@
+
+.navBar{
+    display: flex;
+    outline: 1px solid red;
+    gap: 1rem;
+    font-size: 1.5rem;
+
+    margin-bottom: 5rem;
+}
+
+header{
+    outline: 1px solid blue;
+}
