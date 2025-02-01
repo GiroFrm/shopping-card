@@ -1,0 +1,69 @@
+
+.checkOut{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    
+ }
+
+ .checkOut__list{
+   display: flex;
+   gap:1rem;
+   align-items:center;
+   padding-block: 1rem;
+   border-bottom: 1px solid grey;
+ }
+
+ .checkOut button {
+    cursor:pointer;
+ }
+
+ .checkOut__button--container{
+   width: 100%;
+   
+ }
+
+.checkout__button{
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.4em 0.8em;
+    background-color: #FFCE12;
+    cursor: pointer;
+    width: 100%;
+   
+}
+
+.checkout__button:hover{
+    opacity: 0.7;
+}
+
+.checkOut__price {
+    margin-left: 5px; 
+    font-weight: 600;
+}
+
+.btnsContainer{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.checkOut__pay{
+    border: 1px solid grey;
+    display:grid;
+     background-color: #F5F5F5;
+     min-width: 20rem;
+    
+}
+
+.checkOut__total{
+    font-weight:  600;
+    display:flex; 
+    justify-content:space-between;
+}
+
+.line-bottom{
+    border-bottom:  1px solid black;
+    padding: 1rem;
+    line-height: 0.5rem;
+}
