@@ -1,12 +1,7 @@
 import React from 'react'
+import AddToCartButton from './AddToCarButton';
 
 function Card({prop, addIdProduct, addProductsCart}) {
-
-    const handleClick = (prop)=>{
-        console.log(`this is product id` +prop.id);
-        addIdProduct(prop.id);
-        addProductsCart(prop);
-    }
 
   return (
     <div className='card'  style={{ padding: '0.3rem'}}>
@@ -16,8 +11,7 @@ function Card({prop, addIdProduct, addProductsCart}) {
     <p className='card__title'>{prop.title}</p>
     <p className='card__price'>${prop.price}</p>
     <div>
-     <button className='card__button' 
-                 onClick={()=>handleClick(prop)}>Add to cart</button>
+     <AddToCartButton prop={prop} addIdProduct={addIdProduct} addProductsCart={addProductsCart}/>
     </div>
   </div>
   )
