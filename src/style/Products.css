@@ -1,0 +1,9 @@
+
+
+.products__categories{
+    cursor: pointer;
+    display:flex;
+    gap: 2rem;
+    padding-block: 1rem;
+    font-size: 1.2rem;
+}
