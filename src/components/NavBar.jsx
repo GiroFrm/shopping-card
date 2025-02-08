@@ -1,15 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
+import '../style/Navbar.css'
+import shoppingCard from '../assets/shoppingCart.png';
 
-function NavBar() {
+function NavBar({cartCount}) {
+
   return (
-    <div>
-        <ul>
-            <li><Link to="homepage">Home</Link> </li>
+    <header className="primary-nav">
+        <ul className='navBar'>
+            <li><Link to="/">Home</Link> </li>
             <li><Link to="products">Products</Link></li>
-            <li><Link to="about">About</Link></li>
+            <li><Link to="about">About</Link></li> 
         </ul>
-    </div>
+         <Link to="checkout">
+             <img className ="iconShopping" src={shoppingCard} alt="" />
+             <span className="cartCount">{cartCount}</span>
+         </Link>
+    </header>
   )
 }
 
