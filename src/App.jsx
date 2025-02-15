@@ -1,33 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { Outlet } from 'react-router-dom'
 import './App.css'
+import NavBar from './components/NavBar'
+import { useState } from 'react';
+import useCategory from './hooks/useCategory';
+import { MENS_CLOTHING } from './constants/apiConstants';
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
+  const [idProduct, setIdProduct] = useState([]);
+  const  addIdProduct = (prop) => setIdProduct([...idProduct, prop.id]);
+  
+  const [cartProducts, setCartProducts] = useState([]);
+  const addProductsCart =(product) => setCartProducts([...cartProducts, product]);
+
+  const  { category, setCategory  } = useCategory(MENS_CLOTHING);
+
+  const addProductsbyIDCart =(id) => {
+    setCartProducts(prevCartProducts=>{
+       const product = prevCartProducts.find(prod => prod.id === id);
+       if(product){
+       const newCartProducts = [...prevCartProducts, product];
+          return newCartProducts;
+       }
+          return prevCartProducts;
+    })
+  }
+
+  const removeProductCopyCart = (id) => { 
+    setCartProducts(prevCartProducts => {
+      const index = prevCartProducts.findIndex(product => product.id === id);
+      if (index !== -1) {
+          const newCartProducts = [...prevCartProducts];
+          newCartProducts.splice(index, 1);
+          return newCartProducts;
+      }
+      return prevCartProducts;
+  });
+  }
+
+  const removeProductCart=(id) =>{
+    setCartProducts(prevCartProducts => {
+      return prevCartProducts.filter(prod=> prod.id !==id)
+    })
+  }
+  
+  const cartCount = cartProducts.length;
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     <NavBar cartCount={cartCount}/>
+     <Outlet context={{ 
+              removeProductCopyCart, 
+              removeProductCart,
+              addIdProduct,
+              addProductsbyIDCart, 
+              idProduct, 
+              cartProducts, 
+              addProductsCart,
+              category,
+              setCategory }}/>
     </>
   )
 }
