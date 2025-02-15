@@ -1,7 +1,13 @@
 .card{
-    max-width: 15rem;
+    max-width: 250px;
     border: 1px solid grey;
+    border-radius: 8px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:0.2rem;
+    padding: 1rem;
 
 }
 
