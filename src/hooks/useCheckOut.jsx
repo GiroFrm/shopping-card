@@ -18,7 +18,7 @@ function useCheckOut() {
     addProductsbyIDCart,
     removeProductCopyCart
   );
-  
+
   const { uniqueProducts } = useUniqueProducts(cartProducts);
 
   const { totalPriceApprox } = useTotalPrice(uniqueProducts, qty);
